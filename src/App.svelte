@@ -1,29 +1,22 @@
 <script>
-	export let name;
-	let color = 'black';
-	let firstName = 'Hieu';
-	let lastName = 'Nguyen';
-
-	$: fullname = `${firstName} ${lastName}`;
-	$: {
-		console.log(color);
-		console.log(fullname);
-	}
-
-	const handleChangeColor = () => {
-		color = 'blue'
-	}
-
-	const handleInput = (event) => {
-		color = event.target.value
-	}
+	let people = [
+		// { id: 1, name: 'Hieu', color: 'red', age: 22 },
+		// { id: 2, name: 'Ha', color: 'blue', age: 19 },
+		// { id: 3, name: 'My', color: 'oorange', age: 5 },
+	]
 </script>
 
 <main>
-	<p>{fullname} - { color }</p>
-	<input type="text" bind:value={firstName} >
-	<input type="text" bind:value={lastName} >
-	<input type="text" bind:value={color} >
+	<ul>
+		{#each people as item  (item.id)}
+			<li>
+				<h4>{item.name}</h4>
+				<p>{item.color}</p>
+			</li>
+		{:else}
+			<p>There are no people to show...</p>
+		{/each}
+	</ul>
 </main>
 
 <style>
