@@ -9,6 +9,7 @@
 </script>
 
 <main>
+	<p>l;isdhfgh;lisj g;</p>
 	<h1>Ten tao la:  {ten}</h1>
 	<h1>Hello {name}!</h1>
 	<p>Màu hiện tại là: { color }</p>
