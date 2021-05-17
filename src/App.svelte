@@ -1,4 +1,6 @@
 <script>
+	import Modal from './Modal.svelte';
+
 	let people = [
 		{ id: 1, name: 'Hieu', color: 'red', age: 22 },
 		{ id: 2, name: 'dd', color: 'blue', age: 19 },
@@ -17,9 +19,10 @@
 {:else if number > 5}
 	<p>Lon hon 5</p>
 {:else}
-	<p>Nho hon hoac bang 5</p>
+	<!-- <p>Nho hon hoac bang 5</p> -->
 {/if}
 
+<Modal />
 <main>
 	{#each people as person (person.id)}
 		<h4>{person.name}</h4>
