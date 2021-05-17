@@ -1,16 +1,13 @@
 <script>
+    export let message = 'Default value';
+    export let isPromo = false;
     let showModal = true;
-    let isPromo = true;
-
-    const handleClick = () => {
-        showModal = !showModal;
-    }
 </script>
 
 {#if showModal}
      <div class="backdrop" class:promo={isPromo}>
          <div class="modal">
-             <p on:click={handleClick}>Sign up for offers</p>
+             <p>{message}</p>
          </div>
      </div>
 {/if}

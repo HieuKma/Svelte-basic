@@ -22,7 +22,7 @@
 	<!-- <p>Nho hon hoac bang 5</p> -->
 {/if}
 
-<Modal />
+<Modal message="Hey, I am prop value" isPromo={true} />
 <main>
 	{#each people as person (person.id)}
 		<h4>{person.name}</h4>
