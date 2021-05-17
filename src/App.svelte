@@ -1,19 +1,26 @@
 <script>
 	export let name;
-	let ten = 'abc';
 	let color = 'black';
 
 	const handleChangeColor = () => {
-		color = 'white'
+		color = 'blue'
+	}
+
+	const handleInput = (event) => {
+		color = event.target.value
 	}
 </script>
 
 <main>
-	<p>l;isdhfgh;lisj g;</p>
-	<h1>Ten tao la:  {ten}</h1>
 	<h1>Hello {name}!</h1>
-	<p>Màu hiện tại là: { color }</p>
+	<p style="color: {color}">Màu hiện tại là: { color }</p>
 	<button on:click={handleChangeColor}>Change color</button>
+	
+	<!-- Cach binh thuong -->
+	<!-- <input type="text" on:input={handleInput} value={color}> -->
+
+	<!-- bind 2 chieu -->
+	<input type="text" bind:value={color} >
 </main>
 
 <style>
