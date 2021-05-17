@@ -1,6 +1,14 @@
 <script>
 	export let name;
 	let color = 'black';
+	let firstName = 'Hieu';
+	let lastName = 'Nguyen';
+
+	$: fullname = `${firstName} ${lastName}`;
+	$: {
+		console.log(color);
+		console.log(fullname);
+	}
 
 	const handleChangeColor = () => {
 		color = 'blue'
@@ -12,14 +20,9 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color: {color}">Màu hiện tại là: { color }</p>
-	<button on:click={handleChangeColor}>Change color</button>
-	
-	<!-- Cach binh thuong -->
-	<!-- <input type="text" on:input={handleInput} value={color}> -->
-
-	<!-- bind 2 chieu -->
+	<p>{fullname} - { color }</p>
+	<input type="text" bind:value={firstName} >
+	<input type="text" bind:value={lastName} >
 	<input type="text" bind:value={color} >
 </main>
 
