@@ -1,22 +1,23 @@
 <script>
 	let people = [
-		// { id: 1, name: 'Hieu', color: 'red', age: 22 },
-		// { id: 2, name: 'Ha', color: 'blue', age: 19 },
-		// { id: 3, name: 'My', color: 'oorange', age: 5 },
+		{ id: 1, name: 'Hieu', color: 'red', age: 22 },
+		{ id: 2, name: 'dd', color: 'blue', age: 19 },
+		{ id: 3, name: 'a', color: 'oorange', age: 5 },
 	]
+
+	let handleClick = (id) => {
+		people = people.filter(item => item.id !== id)
+	}
 </script>
 
 <main>
-	<ul>
-		{#each people as item  (item.id)}
-			<li>
-				<h4>{item.name}</h4>
-				<p>{item.color}</p>
-			</li>
-		{:else}
-			<p>There are no people to show...</p>
-		{/each}
-	</ul>
+	{#each people as person (person.id)}
+		<h4>{person.name}</h4>
+		<p>{person.color}</p>
+		<button on:click={handleClick(person.id)}>Delete</button>
+	{:else}
+		<p>There are no people to show...</p>
+	{/each}
 </main>
 
 <style>
