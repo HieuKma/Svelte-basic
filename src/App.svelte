@@ -1,29 +1,26 @@
 <script>
 	import Modal from './Modal.svelte';
 
+	let showModal = false;
+
 	let people = [
-		{ id: 1, name: 'Hieu', color: 'red', age: 22 },
-		{ id: 2, name: 'dd', color: 'blue', age: 19 },
-		{ id: 3, name: 'a', color: 'orange', age: 5 },
+		{ id: 1, name: 'Nguyen Minh Hieu', color: 'red', age: 22 },
+		{ id: 2, name: 'Nguyen Thi Ha', color: 'blue', age: 19 },
+		{ id: 3, name: 'Nugyen Ngoc Ha My', color: 'orange', age: 5 },
 	]
 
 	let handleClick = (id) => {
 		people = people.filter(item => item.id !== id)
 	}
 
-	let number = 5;
+	const toggleModal = () => {
+		showModal = !showModal;
+	}
 </script>
 
-{#if number > 20}
-	<p>Lon hon 20</p>
-{:else if number > 5}
-	<p>Lon hon 5</p>
-{:else}
-	<!-- <p>Nho hon hoac bang 5</p> -->
-{/if}
-
-<Modal message="Hey, I am prop value" isPromo={true} />
+<Modal message="Hey, I am prop value" {showModal} on:click={toggleModal} />
 <main>
+	<button on:click|once={toggleModal}>Open modal</button>
 	{#each people as person (person.id)}
 		<h4>{person.name}</h4>
 		{#if person.color === 'red' }
