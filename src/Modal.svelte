@@ -1,5 +1,4 @@
 <script>
-    export let message = 'Default value';
     export let isPromo = false;
     export let showModal = false;
 </script>
@@ -7,7 +6,13 @@
 {#if showModal}
      <div class="backdrop" class:promo={isPromo} on:click >
          <div class="modal">
-             <p>{message}</p>
+            <!-- <slot></slot> Slot đại diện cho các thẻ con bên trong. -->
+            <slot name="title"></slot>
+            <div>
+                <slot name="header">No header was provided</slot>
+                <p>Some content between header and footer</p>
+                <slot name="footer"></slot>
+            </div>
          </div>
      </div>
 {/if}
