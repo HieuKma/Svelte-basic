@@ -17,10 +17,16 @@
 	const toggleModal = () => {
 		showModal = !showModal;
 	}
+
+	const testthoi = (event) => {
+		const person = event.detail;
+		people = [person, ...people];
+		showModal = false;
+	}
 </script>
 
 <Modal {showModal} on:click={toggleModal}>
-	<AddPerson />
+	<AddPerson on:testdispatch={testthoi} />
 </Modal>
 
 <main>
@@ -45,12 +51,12 @@
 		margin: 0 auto;
 	}
 
-	h1 {
+	/* h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
-	}
+	} */
 
 	@media (min-width: 640px) {
 		main {

@@ -1,27 +1,30 @@
 <script>
+    import {createEventDispatcher} from 'svelte';
+
+    let dispatch = createEventDispatcher();
+
     let name;
     let beltColour;
     let age;
-    // let fighting = false;
-    // let sneaking = false;
-    // let running = false;
     let skills = [];
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(name, beltColour, age, skills)
+    const handleSubmit = () => {
+        const person = {
+            name,
+            beltColour,
+            age,
+            skills,
+            id: Math.random()
+        }
+        dispatch('testdispatch', person);
     }
 </script>
 
-<form on:submit={handleSubmit}>
+<form on:submit|preventDefault={handleSubmit}>
     <input type="text" placeholder="name" bind:value={name}>
     <input type="number" placeholder="age" bind:value={age}>
 
     <p>Skill: </p>
-    <!-- <input type="checkbox" bind:checked={fighting} />Fighting<br>
-    <input type="checkbox" bind:checked={sneaking} />Sneaking<br>
-    <input type="checkbox" bind:checked={running} />Running<br> -->
-
     <input type="checkbox" bind:group={skills} value="fighting" />Fighting<br>
     <input type="checkbox" bind:group={skills} value="sneaking" />Sneaking<br>
     <input type="checkbox" bind:group={skills} value="running" />Running<br> 
