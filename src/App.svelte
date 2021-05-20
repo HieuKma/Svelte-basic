@@ -2,11 +2,12 @@
 	import Header from './components/Header.svelte';
 	import Footer from './components/footer.svelte';
 	import Tabs from './shared/Tabs.svelte';
+	import CreatePollForm from './components/CreatePoll-form.svelte';
 
 
 	// Tabs
-	let items = ['Minh Hieu', 'Nguyen Minh Hieu'];
-	let activeItem = 'Minh Hieu';
+	let items = ['Current Polls', 'Add new Poll'];
+	let activeItem = 'Current Polls';
 
 	const testthoi = (e) => {
 		activeItem = e.detail;
@@ -16,10 +17,10 @@
 <Header />
 <main>
 	<Tabs {activeItem} {items} on:tabChange={testthoi} />
-	{#if activeItem === 'Minh Hieu'}
+	{#if activeItem === 'Current Polls'}
 		<p>Poll list component goes here</p>
-	{:else if  activeItem === 'Nguyen Minh Hieu' }
-		<p>new poll form component goes here</p>
+	{:else if  activeItem === 'Add new Poll' }
+		<CreatePollForm />
 	{/if}
 </main>
 <Footer />
