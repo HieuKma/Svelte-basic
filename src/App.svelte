@@ -1,66 +1,32 @@
 <script>
-	import Modal from './Modal.svelte';
-	import AddPerson from './addPerson.svelte';
+	import Header from './components/Header.svelte';
+	import Footer from './components/footer.svelte';
+	import Tabs from './shared/Tabs.svelte';
 
-	let showModal = false;
 
-	let people = [
-		{ id: 1, name: 'Nguyen Minh Hieu', color: 'red', age: 22 },
-		{ id: 2, name: 'Nguyen Thi Ha', color: 'blue', age: 19 },
-		{ id: 3, name: 'Nugyen Ngoc Ha My', color: 'orange', age: 5 },
-	]
+	// Tabs
+	let items = ['Minh Hieu', 'Nguyen Minh Hieu'];
+	let activeItem = 'Minh Hieu';
 
-	let handleClick = (id) => {
-		people = people.filter(item => item.id !== id)
-	}
-
-	const toggleModal = () => {
-		showModal = !showModal;
-	}
-
-	const testthoi = (event) => {
-		const person = event.detail;
-		people = [person, ...people];
-		showModal = false;
+	const testthoi = (e) => {
+		activeItem = e.detail;
 	}
 </script>
 
-<Modal {showModal} on:click={toggleModal}>
-	<AddPerson on:testdispatch={testthoi} />
-</Modal>
-
+<Header />
 <main>
-	<button on:click={toggleModal}>Open modal</button>
-	{#each people as person (person.id)}
-		<h4>{person.name}</h4>
-		{#if person.color === 'red' }
-			<p><strong>{person.color}</strong></p>
-		{/if}
-		<p>{person.age} year old, {person.color} belt</p>
-		<button on:click={handleClick(person.id)}>Delete</button>
-	{:else}
-		<p>There are no people to show...</p>
-	{/each}
+	<Tabs {activeItem} {items} on:tabChange={testthoi} />
+	{#if activeItem === 'Minh Hieu'}
+		<p>Poll list component goes here</p>
+	{:else if  activeItem === 'Nguyen Minh Hieu' }
+		<p>new poll form component goes here</p>
+	{/if}
 </main>
+<Footer />
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	/* h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	} */
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+		max-width: 960px;
+		margin: 40px auto;
 	}
 </style>
