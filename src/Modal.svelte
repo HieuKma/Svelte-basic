@@ -4,15 +4,9 @@
 </script>
 
 {#if showModal}
-     <div class="backdrop" class:promo={isPromo} on:click >
+     <div class="backdrop" class:promo={isPromo} on:click|self >
          <div class="modal">
-            <!-- <slot></slot> Slot đại diện cho các thẻ con bên trong. -->
-            <slot name="title"></slot>
-            <div>
-                <slot name="header">No header was provided</slot>
-                <p>Some content between header and footer</p>
-                <slot name="footer"></slot>
-            </div>
+            <slot></slot>
          </div>
      </div>
 {/if}

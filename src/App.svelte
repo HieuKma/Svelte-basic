@@ -1,5 +1,6 @@
 <script>
 	import Modal from './Modal.svelte';
+	import AddPerson from './addPerson.svelte';
 
 	let showModal = false;
 
@@ -18,25 +19,12 @@
 	}
 </script>
 
-<Modal message="Hey, I am prop value" {showModal} on:click={toggleModal}>
-	<!-- <h3>Add a new person</h3> -->
-	<form>
-		<input type="text" placeholder="name">
-		<input type="text" placeholder="belt ">
-		<button>Add person</button>
-	</form>
-
-	<h2>Test</h2>
-	
-	<h1 slot="header">Hello</h1>
-	<p slot="footer">Copyright (c) 2019 Svelte Industries</p>
-
-	<div slot="title">
-		<h3>Add a new person</h3>
-	</div>
+<Modal {showModal} on:click={toggleModal}>
+	<AddPerson />
 </Modal>
+
 <main>
-	<button on:click|once={toggleModal}>Open modal</button>
+	<button on:click={toggleModal}>Open modal</button>
 	{#each people as person (person.id)}
 		<h4>{person.name}</h4>
 		{#if person.color === 'red' }
